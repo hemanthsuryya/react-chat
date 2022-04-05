@@ -14,6 +14,8 @@ export default function SignInPage() {
         let response = await login(data);
         if(response){
             // Send user to Login page...
+            localStorage.setItem("username",data.username);
+
             navigate("/home")
         }
         else{

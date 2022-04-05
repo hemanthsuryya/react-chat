@@ -16,7 +16,10 @@ export default function SignUpPage() {
         let response = await register(data);
         if(response){
             // Send user to Login page...
-            navigate("/home")
+            localStorage.setItem("username",data.username);
+
+            navigate("/home");
+
         }
         else{
             alert("Register Failed")
