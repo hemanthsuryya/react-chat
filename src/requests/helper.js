@@ -42,6 +42,11 @@ export const searchUsers = async(username)=>{
     return res;
 }
 
+/**
+ * This function will get the user with the given id
+ * @param id - The id of the user you want to get.
+ * @returns A promise
+ */
 export const getUser = async(id)=>{
     let url = `${baseURL}/features/getUser?id=${id}`;
     let res = axios.get(url).then((response) => {
@@ -72,5 +77,13 @@ export const acceptFriendRequest = async(data)=>{
     let res = axios.post(url,data).then((response)=>{
         return response;
     })
+    return res;
+}
+
+export const getMessages = async(roomId)=>{
+    let url = `${baseURL}/features/getMessages?roomId=${roomId}`;
+    let res = axios.get(url).then((response) => {
+        return response;
+      });
     return res;
 }

@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { searchUsers } from '../../requests/helper';
 import { useNavigate } from "react-router-dom";
-
+import { v5 } from 'uuid';
 import { getAllFriends } from '../../requests/helper';
 
 export default function HomePage() {
@@ -33,8 +33,12 @@ export default function HomePage() {
     function handleClick(id){
         navigate(`/user/${id}`)
     }
-    const handleChat = () =>{
-        console.log("go to Chat Page")
+    function handleChat(friendName){
+        const MY_NAMESPACE = '1b671a64-40d5-491e-99b0-da01ff1f3341';
+        var me = v5(localStorage.getItem("username"),MY_NAMESPACE);
+        var friend = v5(friendName,MY_NAMESPACE);
+        var uniqueId = [me,friend].sort().join('-')
+        navigate(`/chatroom/${uniqueId}`)
     }
     const handleReqClick = () =>{
         navigate('/request')
@@ -56,7 +60,7 @@ export default function HomePage() {
             <div>
                 {allFriends?
                 allFriends.map((item,index)=>(
-                    <div key={index} style={{border:"1px solid"}} onClick={handleChat}>
+                    <div key={index} style={{border:"1px solid"}} onClick={()=>handleChat(item.username)}>
                         {item.username}
                     </div>
                 ))
