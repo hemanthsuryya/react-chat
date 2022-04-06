@@ -9,6 +9,7 @@ import HomePage from './components/pages/HomePage'
 import User from './components/pages/User'
 import RequestsRec from './components/pages/RequestsRec'
 import Chat from './components/pages/Chat'
+import InvitationSent from './components/pages/InvitationSent'
 import './App.css'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
                     <Route path="/home" element={ <HomePage/> } />
                     <Route path="/user/:id" element={<User/>}/>
                     <Route path="/request" element={ <RequestsRec/> } />
+                    <Route path="/invitation" element={ <InvitationSent/> } />
                     <Route path="/chatroom/:id" element={<Chat/>}/>
                 </Routes>
             </div>

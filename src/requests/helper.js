@@ -33,6 +33,13 @@ export const getAllInvitations = async(username)=>{
       });
     return res;
 }
+export const getAllSentInvitations = async(username)=>{
+    let url = `${baseURL}/features/getAllPendingRequests?username=${username}`;
+    let res = axios.get(url).then((response) => {
+        return response;
+      });
+    return res;
+}
 
 export const searchUsers = async(username)=>{
     let url = `${baseURL}/features/search?username=${username}`;

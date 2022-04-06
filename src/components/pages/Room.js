@@ -25,14 +25,17 @@ const Room = ({socket,username,room}) => {
     }
     async function fetchMessages() {
         let res = await getMessages(room);
-        setMessageList(res.data.chats);
+        // console.log(res);
+        if(res.data!=""){
+            setMessageList(res.data.chats);
+        }
     }
     useEffect(()=>{
         fetchMessages();
     },[])
     useEffect(() => {
         socket.on("receiveMessage",(data)=>{
-            console.log(data);
+            // console.log(data);
             var chat  = {
                 message:data.message,
                 author:data.author,
@@ -48,13 +51,13 @@ const Room = ({socket,username,room}) => {
             <h1> Live {username}</h1>
             </div>
             <div className="body">
-                {messageList.map((item,index)=>(
+                {messageList?messageList.map((item,index)=>(
                     <div key={index}>
                         <div style={{display:"flex"}}>
                         <h2 style={{margin:"4px"}}>{item.author} : </h2><h4 style={{margin:"10px"}}>{item.message}</h4><h6 style={{margin:"14px"}}> {item.time}</h6>
                         </div>
                     </div>
-                ))}
+                )):null}
             </div>
             <div>
                 <input type="text" placeholder="Hey.." value={currentMessage} onChange={(e)=>{
