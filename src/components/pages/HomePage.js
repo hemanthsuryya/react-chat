@@ -3,6 +3,7 @@ import { searchUsers } from '../../requests/helper';
 import { useNavigate } from "react-router-dom";
 import { v5 } from 'uuid';
 import { getAllFriends } from '../../requests/helper';
+import './HomePage.css';
 
 export default function HomePage() {
 
@@ -44,23 +45,34 @@ export default function HomePage() {
         navigate('/request')
     }
     return (
-        <div>
-            <div>
-                Search:<input type="text" id="search" value={search} style={{border:"1px solid"}} onChange={(e)=>handleChange(e)}/>
-                {searchedList? searchedList.map((item,index)=>(
-                    <div key={index}>
-                        <button onClick={()=>handleClick(item._id)}>{item.username}</button>
-                    </div>
-                )):null}
-            </div>
+        
+        <div className='card'>
+            
             <div className="text-center">
                 <h1 className="home-page-title">Chat</h1>
             </div>
-            <button onClick={handleReqClick}>Request Received</button>
+            <div className="func-area">
+
+            
+            <div className="search-div">
+                <input type="text" id="search" placeholder={'Search for friends'} value={search} style={{border:"1px solid"}} onChange={(e)=>handleChange(e)}/>
+                {searchedList? searchedList.map((item,index)=>(
+                    <div key={index}>
+                        <button className='search-list-item' onClick={()=>handleClick(item._id)}>{item.username}</button>
+                    </div>
+                )):null}
+            </div>
+
+            <button className="request-btn-div" onClick={handleReqClick}>Request Received</button>
+            
+            </div>
             <div>
                 {allFriends?
                 allFriends.map((item,index)=>(
-                    <div key={index} style={{border:"1px solid"}} onClick={()=>handleChat(item.username)}>
+                    
+                    <div  key={index}  onClick={()=>handleChat(item.username)}
+                        
+                    >
                         {item.username}
                     </div>
                 ))
