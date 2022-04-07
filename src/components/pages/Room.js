@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { getMessages } from '../../requests/helper';
 
-const Room = ({socket,username,room}) => {
+const Room = ({socket,username,room,friend}) => {
     const [currentMessage,setCurrentMessage] = useState("");
     const [messageList,setMessageList ] = useState([]);
 
@@ -26,13 +26,13 @@ const Room = ({socket,username,room}) => {
     async function fetchMessages() {
         let res = await getMessages(room);
         // console.log(res);
-        if(res.data!=""){
+        if(res.data!==""){
             setMessageList(res.data.chats);
         }
     }
     useEffect(()=>{
         fetchMessages();
-    },[])
+    })
     useEffect(() => {
         socket.on("receiveMessage",(data)=>{
             // console.log(data);
@@ -48,7 +48,7 @@ const Room = ({socket,username,room}) => {
     return (
         <div>
             <div>
-            <h1> Live {username}</h1>
+            <h1> Chatting with {friend}</h1>
             </div>
             <div className="body">
                 {messageList?messageList.map((item,index)=>(

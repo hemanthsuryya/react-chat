@@ -1,19 +1,19 @@
-import React,{useState,useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import React,{useEffect} from 'react';
+import { useParams,useLocation } from 'react-router-dom';
 import Room from './Room';
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3001");
 
 
-function Chat() {
+
+function Chat({socket}) {
     const { id } = useParams();
-
+    const {state} = useLocation();
     useEffect(() => {
-        socket.emit("joinRoom",id);
-    }, []);
+      // state.socket.emit("joinRoom",id);
+      console.log(state,id);
+    });
   return (
     <div>Chat
-    <Room socket={socket} username={localStorage.getItem("username")} room={id}/>
+    <Room socket={socket} username={localStorage.getItem("username")} room={id} friend={state.friendName}/>
     </div>
   )
 }

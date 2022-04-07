@@ -17,8 +17,8 @@ export default function SignUpPage() {
         if(response){
             // Send user to Login page...
             localStorage.setItem("username",data.username);
-
-            navigate("/home");
+            localStorage.setItem("user",JSON.stringify(response.data));
+            navigate("/home",{state:{id:response.data._id}});
 
         }
         else{

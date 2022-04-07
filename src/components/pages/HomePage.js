@@ -1,20 +1,22 @@
 import React,{useState,useEffect} from 'react';
 import { searchUsers } from '../../requests/helper';
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { v5 } from 'uuid';
 import { getAllFriends } from '../../requests/helper';
+
 import './HomePage.css';
 
-export default function HomePage() {
+export default function HomePage({socket}) {
 
     const [search,setSearch] = useState('');
     const [searchedList,setSearchedList] = useState(undefined);
     const [allFriends,setAllFriends] = useState(undefined);
+    const [onlineFriends,setOnlineFriends] = useState({});
     const navigate = useNavigate();
- 
+    const {state} = useLocation();
     const handleChange = async(e) =>{
         setSearch(e.target.value);
-        if(e.target.value==""){
+        if(e.target.value===""){
             setSearchedList(undefined);
         }
         else{
@@ -30,7 +32,15 @@ export default function HomePage() {
     }
     useEffect(() => {
         fetchFriends();
+        let userId = JSON.parse(localStorage.getItem("user"))._id;
+        socket.emit("login",{id:userId});
     }, []);
+    useEffect(() => {
+        socket.on("userStatus",(data)=>{
+            setOnlineFriends(data);
+            // console.log(data);
+        })
+    }, [socket]);
     function handleClick(id){
         navigate(`/user/${id}`)
     }
@@ -39,7 +49,7 @@ export default function HomePage() {
         var me = v5(localStorage.getItem("username"),MY_NAMESPACE);
         var friend = v5(friendName,MY_NAMESPACE);
         var uniqueId = [me,friend].sort().join('-')
-        navigate(`/chatroom/${uniqueId}`)
+        navigate(`/chatroom/${uniqueId}`,{ state: { friendName: friendName} })
     }
     const handleReqClick = () =>{
         navigate('/request')
@@ -55,7 +65,7 @@ export default function HomePage() {
 
             
             <div className="search-div">
-                <input type="text" id="search" placeholder={'Search for friends'} value={search} style={{border:"1px solid"}} onChange={(e)=>handleChange(e)}/>
+                <input type="text" id="search" autoComplete='off' autoFocus="on" placeholder={'Search for friends'} value={search} style={{border:"1px solid"}} onChange={(e)=>handleChange(e)}/>
                 {searchedList? searchedList.map((item,index)=>(
                     <div key={index}>
                         <button className='search-list-item' onClick={()=>handleClick(item._id)}>{item.username}</button>
