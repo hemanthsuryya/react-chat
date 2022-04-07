@@ -12,7 +12,7 @@ function Chat({socket}) {
       console.log(state,id);
     });
   return (
-    <div>Chat
+    <div>
     <Room socket={socket} username={localStorage.getItem("username")} room={id} friend={state.friendName}/>
     </div>
   )

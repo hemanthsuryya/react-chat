@@ -43,6 +43,7 @@ export default function App() {
                         <Link to="/request">InvitationReceived</Link>
                         <a
                             onClick={() => {
+                                socket.emit("logout");
                                 Logout();
                             }}
                         >

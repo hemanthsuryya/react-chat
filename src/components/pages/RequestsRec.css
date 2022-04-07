@@ -1,0 +1,37 @@
+.req-page-header{
+    top:1vh;
+    left:1vw;
+    width: 98vw;
+    height: 98vh;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe,
+                -15px -15px 30px #ffffff;
+    /* text-align: center; */
+}
+
+.req-page-header h2 {
+    text-align: center;   
+    padding: 50px;
+}
+
+.req-item{
+    margin-left: 50px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.req-item img{
+    height: 40px;
+}
+.req-msg{
+    padding: 10px;
+}
+
+.req-item button{
+    border-radius: 5px;
+    padding: 5px;
+    align-self: right;
+    box-shadow: 15px 15px 30px #bebebe;
+    background: #bebebe;
+}
