@@ -31,6 +31,7 @@ export default function HomePage({ socket }) {
         let allFriendsList = allfriends.data.friendList;
         // console.log(allFriends);
         setAllFriends(allFriendsList);
+        socket.emit("getStatus");
     }
     useEffect(() => {
         let userId = JSON.parse(localStorage.getItem("user"))._id;
@@ -39,7 +40,9 @@ export default function HomePage({ socket }) {
     }, []);
     async function setStatus() {
         socket.on("userStatus", async (data) => {
+            console.log("Called this")
             let onlineIds = Object.values(data);
+            setOnlineFriends(onlineIds);
             let allfriends = await getAllFriends(localStorage.getItem("username"));
             let allFriendsList = allfriends.data.friendList;
             let status  = {}
@@ -56,7 +59,7 @@ export default function HomePage({ socket }) {
     }
     useEffect(() => {
         setStatus();
-    }, [socket]);
+    });
     function handleClick(id) {
         navigate(`/user/${id}`)
     }
