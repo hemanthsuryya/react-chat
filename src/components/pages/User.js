@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { getUser } from '../../requests/helper';
 import { checkFriendship,sendFriendRequest} from '../../requests/helper';
+import './User.css'
 function User() {
     const { id } = useParams();
     const [user,setUser] = useState(undefined);
@@ -33,13 +34,17 @@ function User() {
         fetchUser(id)
     }, []);
   return (
-    <div>
+    <div className='card'>
     {user?
-    <div>
-            {user.username}
+    <div className='profile-card'>
+            <img src="https://www.vhv.rs/dpng/d/421-4211266_simple-user-icon-user-icon-clipart-hd-png.png" alt='user'/>
             <br/>
+            <div className='username-label'>
+                    {user.username}
+            </div>
+            <div className='email-label'>
             {user.email}
-            <br/>
+            </div>
             
                 {isFriend
                 ?

@@ -66,17 +66,17 @@ export default function HomePage() {
             <button className="request-btn-div" onClick={handleReqClick}>Request Received</button>
             
             </div>
-            <div>
+            <div className="chats-list">
+                <ul id="friend-list">
                 {allFriends?
                 allFriends.map((item,index)=>(
-                    
-                    <div  key={index}  onClick={()=>handleChat(item.username)}
-                        
-                    >
-                        {item.username}
-                    </div>
+                    <li  key={index} className="friend" onClick={()=>handleChat(item.username)}>
+                        <img src="https://www.vhv.rs/dpng/d/421-4211266_simple-user-icon-user-icon-clipart-hd-png.png" alt="friend" />
+                        <div class="name">{item.username}</div>
+                    </li>
                 ))
-                :null}    
+                :null}
+                </ul>    
             </div>
         </div>
 

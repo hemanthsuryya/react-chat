@@ -12,7 +12,7 @@ function Chat() {
         socket.emit("joinRoom",id);
     }, []);
   return (
-    <div>Chat
+    <div>
     <Room socket={socket} username={localStorage.getItem("username")} room={id}/>
     </div>
   )

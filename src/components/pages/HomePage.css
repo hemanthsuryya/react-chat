@@ -9,8 +9,8 @@
 
 .search-div{
     position: absolute;
-    top: 15vh;
-    left: 5vw;
+    top: 23vh;
+    right: 5vw;
 }
 #search{
     border-radius: 25px;
@@ -121,4 +121,64 @@
                 -15px -15px 30px #ffffff;
    }
 /*  */
-/* Search bar */
+
+/* chat area */
+.chats-list{
+    position: absolute;
+    top: 15vh;
+    left: 5vw; 
+    /* padding: 0 5vh; */
+    /* background-color: white; */
+
+}
+
+.chat-list-item{
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);    
+    width: 300px;
+    height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#friend-list { 
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 100%;
+    background: #EEE;
+    list-style-type: none;
+  }
+  
+  .friend {
+    width: 300px;
+    height: 60px;
+    background: #EEE;
+    border-bottom: 1px solid #DDD;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .friend img {
+    width: 45px;
+    height: 45px;
+    border-radius: 30px;
+    border: 2px solid #AAA;
+    object-fit: cover;
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+  
+  .friend .name {
+    font-size: 18px;
+  }
+
+  .friend:hover{
+      background-color: #bebebe;
+  }
