@@ -87,12 +87,11 @@ export default function HomePage({ socket }) {
                     <input type="text" id="search" autoComplete='off' placeholder={'Search for friends'} value={search} style={{ border: "1px solid" }} onChange={(e) => handleChange(e)} />
                     {searchedList ? searchedList.map((item, index) => (
                         <div key={index}>
+                            <img src="https://www.vhv.rs/dpng/d/421-4211266_simple-user-icon-user-icon-clipart-hd-png.png" alt="friend" />
                             <button className='search-list-item' onClick={() => handleClick(item._id)}>{item.username}</button>
                         </div>
                     )) : null}
                 </div>
-
-                <button className="request-btn-div" onClick={handleReqClick}>Request Received</button>
 
             </div>
             <div className="chats-list">
@@ -113,8 +112,10 @@ export default function HomePage({ socket }) {
                             </li>
                         ))
                         : null}
+
                 </ul>
             </div>
+            <button className="request-btn-div" onClick={handleReqClick}>Invitation Received</button>
         </div>
 
     )

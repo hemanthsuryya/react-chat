@@ -9,41 +9,59 @@
 
 .search-div{
     position: absolute;
-    top: 23vh;
-    right: 5vw;
+    top: 18vh;
+    right: 12vw;
+    box-shadow: 4px 4px 8px #bebebe,
+                -4px -4px 8px #ffffff;
+    background-color: #a7fff89e;
+
 }
 #search{
-    border-radius: 25px;
+    /* border-radius: 25px; */
   /* border: 2px solid #73AD21; */
   padding: 20px;
   width: 200px;
   height: 1em; 
 }
 
+.search-div img {
+  width: 25px;
+  height: 25px;
+  border-radius: 30px;
+  border: 2px solid #AAA;
+  object-fit: cover;
+  margin-left: 5px;
+  /* margin-right: 10px; */
+}
+
 .search-list-item{
     /* padding: 20px; */
-    border-radius: 25px;
-    width: 200px;
-    height: 2em;
-    vertical-align: middle;
-    text-align: center;
-    margin: 0 auto;
+    /* border-radius: 25px; */
+    width: 150px;
+    /* height: 2em; */
+    /* vertical-align: middle; */
+    /* text-align: center; */
+    /* margin: 2px; */
+    background: none;
+    padding: 8px;
+    border: none;
+    
 }
 
 .request-btn-div{
-    position: absolute;
-    top: 15vh;
-    right: 5vw;
-    border-radius: 25px;
-    border: 1px solid black;
-    background-color: white;
-    padding: 10px;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);    
-    width: 200px;
-    height: 50px;
-    vertical-align: middle;
-    text-align: center;
-    margin: 0 auto;
+  position: absolute;
+  top: 18vh;
+  left: 4vw;
+  border-radius: 1px;
+  border: 1px solid black;
+  background-color: white;
+  /* padding: 10px; */
+  box-shadow: 2px 2px 2px 1px rgb(0 0 255 / 20%);
+  width: 150px;
+  height: 50px;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 auto;
 }
 .request-btn-div:hover{
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);    
@@ -111,14 +129,18 @@
 /* Card */
 /* From cssbuttons.io by @adamgiebl */
 .card {
-    top:1vh;
-    left:1vw;
-    width: 98vw;
-    height: 98vh;
+    /* top:1vh;
+    left:1vw; */
+    /* width: 98vw; */
+    max-height: 90vh !important;
     border-radius: 30px;
-    background: #e0e0e0;
+    background: #EFFFFD !important;
     box-shadow: 15px 15px 30px #bebebe,
                 -15px -15px 30px #ffffff;
+    overflow-y: auto !important;
+    /* margin-top: 5px; */
+    margin-left: 50px;
+    margin-right: 140px;
    }
 /*  */
 
@@ -149,20 +171,26 @@
     display: block;
     margin: 0;
     padding: 0;
-    width: 300px;
+    width: 400px;
     height: 100%;
-    background: #EEE;
+    background: #a7fff89e;
     list-style-type: none;
+    margin-left: 220px;
+    box-shadow: 5px 5px 10px #bebebe,
+                -5px -5px 10px #ffffff;
+                padding: 10px;
   }
   
   .friend {
-    width: 300px;
+    width: 200px;
     height: 60px;
-    background: #EEE;
-    border-bottom: 1px solid #DDD;
+    /* background: #EEE;
+    border-bottom: 1px solid #DDD; */
     cursor: pointer;
     display: flex;
     align-items: center;
+    margin: 20px;
+    padding: 20px;
   }
   
   .friend img {
@@ -176,13 +204,14 @@
   }
   
   .friend .name {
-    font-size: 18px;
-    margin-left: 10px;
+    font-size: 20px;
+    margin: 80px;
+
   }
 
-  .friend:hover{
+  /* .friend:hover{
       background-color: #bebebe;
-  }
+  } */
   .icon-container {
     width: 50px;
     height: 50px;

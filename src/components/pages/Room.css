@@ -30,7 +30,8 @@
 .chat-window .chat-body {
   height: calc(650px - (45px + 70px));
   border: 1px solid #263238;
-  background: #fff;
+  /* background: #fff; */
+  background-color: rgba(233, 233, 233, 0.6);
 
   position: relative;
 }
@@ -66,6 +67,7 @@
   padding-left: 5px;
   overflow-wrap: break-word;
   word-break: break-word;
+  box-shadow: 2px 2px cornflowerblue;
 }
 
 #you {
@@ -88,6 +90,7 @@
 #other .message-content {
   justify-content: flex-end;
   background-color: cornflowerblue;
+  box-shadow: 2px 2px #43a047;;
 }
 
 #other .message-meta {
