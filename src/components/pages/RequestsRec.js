@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 /* This is importing the functions from the helper file. */
 import { getAllInvitations,acceptFriendRequest } from '../../requests/helper';
+import './RequestsRec.css'
 
 function RequestsRec() {
     const [requestList,setRequestList] = useState(undefined);
@@ -27,15 +28,21 @@ function RequestsRec() {
 
     }
   return (
-    <div>
+    <div className='req-page-header'>
+        <h2> Friend Requests</h2>
         {requestList?
         requestList.map((item,index)=>(
             /* This is a div that is being rendered for each item in the requestList. The key is the
             index of the item in the list. The border is 1px solid. The username is the username of
             the person who sent the request. The span is a button that says accept. The onClick is a
             function that calls the handleAccept function. */
-            <div key={index} style={{border:"1px solid"}} >
-                {item.username} : <span style={{border:"solid 1px",backgroundColor:"red"}} onClick={()=>handleAccept(item.username)}>Accept</span>
+            <div className="req-item" key={index}  >
+                <img src="https://www.pinclipart.com/picdir/middle/422-4224719_png-file-svg-newsletter-clipart.png" alt='point'/>
+                <span className='req-msg'>{item.username} sent you friend request : 
+                </span>
+                <button onClick={()=>handleAccept(item.username)}>
+                    Accept
+                </button>
             </div>
         ))
         :null}   

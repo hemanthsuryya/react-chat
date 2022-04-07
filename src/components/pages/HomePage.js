@@ -49,7 +49,7 @@ export default function HomePage() {
         <div className='card'>
             
             <div className="text-center">
-                <h1 className="home-page-title">Chat</h1>
+                <h1 className="home-page-title">Friends</h1>
             </div>
             <div className="func-area">
 
