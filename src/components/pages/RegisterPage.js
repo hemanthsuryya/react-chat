@@ -32,7 +32,7 @@ export default function SignUpPage() {
             <form onSubmit={handleSubmit}>
                 <p>
                     <label>Username</label><br/>
-                    <input type="text" name="first_name" value={data.username} onChange={(e) => setData({...data, username:e.target.value})} required  />
+                    <input type="text" name="first_name" placeholder='min 6 character' value={data.username} onChange={(e) => setData({...data, username:e.target.value})} required  />
                 </p>
                 <p>
                     <label>Email address</label><br/>
