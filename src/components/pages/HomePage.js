@@ -3,11 +3,36 @@ import { searchUsers } from '../../requests/helper';
 import { useNavigate, useLocation } from "react-router-dom";
 import { v5 } from 'uuid';
 import { getAllFriends } from '../../requests/helper';
-
+import aajtk from "../../images/Aaj_Tak_logo.png";
+import star from "../../images/Star_Sports_India_logo1.png";
+import sonyp from "../../images/Sony_pal.png";
+import xm from "../../images/9XMHindiMusicTelevisionChannelLogo.jpg";
+import sport from "../../images/StarPlus_Logo.png";
 import './HomePage.css';
 
 export default function HomePage({ socket }) {
-
+    const bio = [
+        {
+            name:"Aaj Tak",
+            logo:aajtk
+        },
+        {
+            name:"Star Plus",
+            logo:star
+        },
+        {
+            name:"Sony Pal",
+            logo:sonyp
+        },
+        {
+            name:"9XM",
+            logo:xm
+        },
+        {
+            name:"Stat Sports",
+            logo:sport
+        },
+    ]
     const [search, setSearch] = useState('');
     const [isOnline,setIsOnline] = useState({});
     const [searchedList, setSearchedList] = useState(undefined);
@@ -29,8 +54,12 @@ export default function HomePage({ socket }) {
     async function fetchFriends() {
         let allfriends = await getAllFriends(localStorage.getItem("username"));
         let allFriendsList = allfriends.data.friendList;
-        // console.log(allFriends);
+        for(let i=0; i<allFriendsList.length; i++){
+            allFriendsList[i]["bio"] = bio[Math.floor(Math.random() * bio.length)];
+        }
+        // console.log(allFriendsList);
         setAllFriends(allFriendsList);
+        
         socket.emit("getStatus");
     }
     useEffect(() => {
@@ -59,7 +88,7 @@ export default function HomePage({ socket }) {
     }
     useEffect(() => {
         setStatus();
-    });
+    },[socket]);
     function handleClick(id) {
         navigate(`/user/${id}`)
     }
@@ -100,7 +129,7 @@ export default function HomePage({ socket }) {
                         allFriends.map((item, index) => (
                             <li key={index} className="friend" onClick={() => handleChat(item.username)}>
                                 <div className='icon-container'>
-                                    <img src="https://www.vhv.rs/dpng/d/421-4211266_simple-user-icon-user-icon-clipart-hd-png.png" alt="friend" />
+                                    <img className='friend-img' src="https://www.vhv.rs/dpng/d/421-4211266_simple-user-icon-user-icon-clipart-hd-png.png" alt="friend" />
                                     {isOnline[item._id]?<div className='online-status-circle'>
                                     </div>
                                     :
@@ -108,7 +137,10 @@ export default function HomePage({ socket }) {
                                     </div>
                                     }
                                 </div>
-                                <div className="name">{item.username}</div>
+                                <div className="name">{item.username}
+                                </div>
+                                
+                                <img className='channel-img' src={item.bio.logo} alt={item.bio.name} />
                             </li>
                         ))
                         : null}
